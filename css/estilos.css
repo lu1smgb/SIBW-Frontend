@@ -24,8 +24,8 @@ html {
 
 /** Los contenidos de la web se ven centrados en la ventana */
 body {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 /** Elementos comunes entre la cabecera, el cuerpo y el pie de página */
@@ -50,8 +50,10 @@ header {
     float: left;
     /* Resolución de la imagen */
     /* TODO: El logotipo debe ajustarse a la altura de la cabecera */
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
+    max-width: fit-content;
+    max-height: fit-content;
     /* Color de fondo, por si la imagen falla */
     background-color: #000000;
     /* Espacio entre la imagen y el texto */
@@ -60,19 +62,19 @@ header {
     border-radius: 50%;
 }
 
-/** Titulo y eslogan de la pagina web */
+/** Titulo de la pagina web */
 /* TODO: Para el formato móvil, que el título y el eslogan aparezcan centrados en la cabecera, que no salgan del bloque */
 header > h1 {
     text-align: center;
-    font-style: italic;
     margin: 1px;
 }
 
 /** Bloque de los enlaces a los menús */
 /* TODO: Que los enlaces estén centrados en el bloque, si es posible */
-/* nav {
-
-} */
+nav {
+    /* Los enlaces aparecen en el centro */
+    text-align: center;
+}
 
 /** Estilo de los enlaces a los menús */
 /* Los enlaces no están subrayados */
@@ -126,6 +128,7 @@ aside {
     float: right;
     text-align: center; /* Texto centrado, como en el Mockup */
     justify-content: center;
+    border-left-style: double;
 }
 
 /******************** PIE DE LA PÁGINA ********************/
