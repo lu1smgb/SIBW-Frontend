@@ -1,0 +1,137 @@
+/*
+    Hoja de estilos CSS para los ficheros:
+    - portada.html (index.html)
+    - <cientifico>.html
+
+    Prácticas de SIBW
+    Curso 2022/2023
+    Autor: Luis Miguel Guirado Bautista
+    Universidad de Granada
+
+    @lu1smgb on GitHub
+*/
+
+/** Valores por defecto */
+* {
+    font-family: Verdana;
+    border-width: 1px;
+}
+
+/** Color de fondo de la web */
+html {
+    background-color: #333333;
+}
+
+/** Los contenidos de la web se ven centrados en la ventana */
+body {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+/** Elementos comunes entre la cabecera, el cuerpo y el pie de página */
+header, .panel-principal, footer {
+    background-color: #5c5c5c;
+    color: #d0d0d0;
+    border-radius: 12px;
+}
+
+/******************** CABECERA DE LA PÁGINA ********************/
+
+/** Bloque de la cabecera */
+header {
+    /* Espacio entre el contenido y el borde */
+    padding: 12px;
+}
+
+/** Logotipo de la esquina superior izquierda */
+/* TODO: Para el formato móvil, que el logotipo se muestre encima de los demás elementos de la cabecera */
+.logotipo {
+    /* A la izquierda del titulo y del eslogan */
+    float: left;
+    /* Resolución de la imagen */
+    /* TODO: El logotipo debe ajustarse a la altura de la cabecera */
+    width: 80px;
+    height: 80px;
+    /* Color de fondo, por si la imagen falla */
+    background-color: #000000;
+    /* Espacio entre la imagen y el texto */
+    margin-right: 10px;
+    /* Imagen redonda, como en el Mockup */
+    border-radius: 50%;
+}
+
+/** Titulo y eslogan de la pagina web */
+/* TODO: Para el formato móvil, que el título y el eslogan aparezcan centrados en la cabecera, que no salgan del bloque */
+header > h1 {
+    text-align: center;
+    font-style: italic;
+    margin: 1px;
+}
+
+/** Bloque de los enlaces a los menús */
+/* TODO: Que los enlaces estén centrados en el bloque, si es posible */
+/* nav {
+
+} */
+
+/** Estilo de los enlaces a los menús */
+/* Los enlaces no están subrayados */
+nav > a {
+    text-decoration: none;
+}
+/* Enlaces no visitados */
+nav > a:link {
+    color: #60d2ff;
+}
+/* Enlaces visitados */
+nav > a:visited {
+    color: #008cff;
+}
+/* Enlaces con el cursor por encima */
+nav > a:hover {
+    color: #7acaff;
+}
+/* Enlaces al hacer click */
+nav > a:active {
+    color: #ffffff;
+}
+
+/******************** CUERPO DE LA PÁGINA ********************/
+
+/** Bloque de cuerpo */
+.panel-principal {
+    /* Estructura de grid */
+    /* TODO: Estudiar el resto de layouts y ver si el grid realmente es el más adecuado */
+    display:grid;
+    /* Distribución del panel principal y el lateral, respectivamente */
+    /* TODO: Cambiar distribuciones del panel principal, no me convencen */
+    grid-template-columns: 70% 30%;
+    /* Espacio entre la cabecera y el pie de página */
+    margin-top: 12px;
+    margin-bottom: 12px;
+    /* Un poco de espacio entre el borde y el contenido para que no se salga de las esquinas */
+    padding: 6px;
+    /* Dimensiones del cuerpo */
+    width: auto;
+    height: 750px;
+}
+
+/** Bloque que contiene a los cientificos */
+section {
+    float: left; /* A la izquierda */
+}
+
+/** Panel lateral */
+aside {
+    float: right;
+    text-align: center; /* Texto centrado, como en el Mockup */
+    justify-content: center;
+}
+
+/******************** PIE DE LA PÁGINA ********************/
+footer {
+    /* Un poco de padding para que el texto no se vea tan ajustado */
+    padding:6px;
+    text-align: center;
+    border-radius: 6px;
+}

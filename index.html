@@ -1,25 +1,33 @@
 <!--
     Portada/menú principal de nuestra página web
 
+    Prácticas de SIBW
+    Curso 2022/2023
+    Autor: Luis Miguel Guirado Bautista
+    Universidad de Granada
+
     @lu1smgb on GitHub
 -->
 <!DOCTYPE html>
-<html>
+<html lang="es-ES">
 
 <!-- CABECERA HTML: Metadatos de la página -->
 
 <head>
     <!--Codificación del texto-->
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+
     <!--La página se adapta al ancho de la pantalla-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!--Palabras clave, descripción y autor del sitio-->
     <meta name="keywords" content="cientifico, biografia, ciencia">
     <meta name="description" content="Conoce a las personas que cambiaron el mundo">
     <meta name="author" content="lu1smgb">
-    <!--Titulo, estilo e icono en el navegador-->
+
+    <!--Titulo, CSS e icono en el navegador-->
     <title>Behind Our Scientists</title>
-    <link rel="stylesheet" href="css/portada.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <link rel="icon" href="images/logotipo.jpg">
 </head>
 
@@ -29,35 +37,45 @@
 
     <!-- CABECERA -->
     <header>
+
         <!-- Logotipo, titulo y eslogan -->
-        <img class="logotipo" src="images/logotipo.jpg">
-        <h1 class="titulo">Behind Our Scientists</h1>
-        <p class="quote">Conoce a las personas que cambiaron el mundo</p>
+        <img class="logotipo" src="images/logotipo.jpg" alt="Logotipo">
+        <!--TODO: Posiblemente agrupar el resto de elementos de la cabecera en un div, despues float: right en css-->
+        <h1>Behind Our Scientists</h1>
+
         <!-- Seccion de menús -->
         <nav>
             <a href="portada.html">Menu 1</a>
             <a href="portada.html">Menu 2</a>
             <a href="portada.html">Menu 3</a>
         </nav>
+
     </header>
 
     <!-- PANEL PRINCIPAL -->
-    <div class="panelPrincipal">
+    <div class="panel-principal">
+
         <!-- Panel con las viñetas de los científicos -->
+        <!-- Cuadricula con imagenes de los cientificos y el nombre -->
         <section>
-            Panel cientificos
-            <!--TODO: Grid con las viñetas de los científicos-->
+            <div class="cientifico">
+
+            </div>
         </section>
+
         <!-- Panel lateral -->
+        <!-- Contiene enlaces de interés relacionados con la web -->
         <aside>
-            Panel lateral
+            <a href="https://google.com">Google</a><br>
+            <a href="https://chat.openai.com">ChatGPT</a>
         </aside>
+
     </div>
 
     <!-- PIE DE PÁGINA -->
     <footer>
-        © 2023 - Luis Miguel Guirado Bautista -
-        <a href="https://github.com/lu1smgb">lu1smgb</a> en GitHub
+        &copy 2023 - Luis Miguel Guirado Bautista -
+        <a href="https://github.com/lu1smgb">lu1smgb</a> en GitHub 😎
     </footer>
 
 </body>
