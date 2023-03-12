@@ -12,19 +12,15 @@
 <html lang="es-ES">
 
 <!-- CABECERA HTML: Metadatos de la página -->
-
 <head>
     <!--Codificación del texto-->
     <meta charset="utf-8">
-
     <!--La página se adapta al ancho de la pantalla-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!--Palabras clave, descripción y autor del sitio-->
     <meta name="keywords" content="cientifico, biografia, ciencia">
     <meta name="description" content="Conoce a las personas que cambiaron el mundo">
     <meta name="author" content="lu1smgb">
-
     <!--Titulo, CSS e icono en el navegador-->
     <title>Behind Our Scientists</title>
     <link rel="stylesheet" href="css/estilos.css">
@@ -32,51 +28,90 @@
 </head>
 
 <!-- CUERPO HTML: Contenido de la página -->
-
 <body>
 
-    <!-- CABECERA -->
-    <header>
+    <div id="main">
 
-        <!-- Logotipo, titulo y eslogan -->
-        <img class="logotipo" src="images/logotipo.jpg" alt="Logotipo">
-        <!--TODO: Posiblemente agrupar el resto de elementos de la cabecera en un div, despues float: right en css-->
-        <h1>Behind Our Scientists</h1>
+        <!-- CABECERA -->
+        <header>
 
-        <!-- Seccion de menús -->
-        <nav>
-            <a href="portada.html">Menu 1</a>
-            <a href="portada.html">Menu 2</a>
-            <a href="portada.html">Menu 3</a>
-        </nav>
+            <!-- Logotipo, titulo y eslogan -->
+            <img id="logotipo" src="images/albert_einstein.jpg" alt="Logotipo">
+            <!--TODO: Posiblemente agrupar el resto de elementos de la cabecera en un div, despues float: right en css-->
+            <h1>Behind Our Scientists</h1>
 
-    </header>
+            <!-- Seccion de menús -->
+            <nav>
+                <a href="portada.html">Menu 1</a>
+                <a href="portada.html">Menu 2</a>
+                <a href="portada.html">Menu 3</a>
+            </nav>
 
-    <!-- PANEL PRINCIPAL -->
-    <div class="panel-principal">
+        </header>
 
-        <!-- Panel con las viñetas de los científicos -->
-        <!-- Cuadricula con imagenes de los cientificos y el nombre -->
-        <section>
-            <div class="cientifico">
+        <!-- CUERPO -->
+        <div id="cuerpo">
 
+            <!-- Panel de cientificos -->
+            <!-- Puede ser un menú o una biografía -->
+            <div id="panel-cientificos">
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
+                <div class="cientifico">
+                    <img src="./images/albert_einstein.jpg" alt="albert_einstein"> 
+                    <p>Nombre Apellidos</p>
+                </div>
             </div>
-        </section>
 
-        <!-- Panel lateral -->
-        <!-- Contiene enlaces de interés relacionados con la web -->
-        <aside>
-            <a href="https://google.com">Google</a><br>
-            <a href="https://chat.openai.com">ChatGPT</a>
-        </aside>
+            <!-- Panel lateral -->
+            <!-- Contiene enlaces de interés relacionados con la web -->
+            <aside>
+                <ul>
+                    <li><a href="https://google.com">Google</a></li>
+                    <li><a href="https://chat.openai.com">ChatGPT</a></li>
+                    <p>Este es el panel lateral, aquí encontrarás referencias para obtener más información acerca de los científicos</p>
+                </ul>
+            </aside>
+
+        </div>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            &copy; 2023 - Luis Miguel Guirado Bautista -
+            <a href="https://github.com/lu1smgb">lu1smgb</a> en GitHub 😎🌯 
+        </footer>
 
     </div>
-
-    <!-- PIE DE PÁGINA -->
-    <footer>
-        &copy 2023 - Luis Miguel Guirado Bautista -
-        <a href="https://github.com/lu1smgb">lu1smgb</a> en GitHub 😎
-    </footer>
 
 </body>
 

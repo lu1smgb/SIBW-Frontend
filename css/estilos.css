@@ -11,28 +11,38 @@
     @lu1smgb on GitHub
 */
 
-/** Valores por defecto */
+/** Fuente por defecto y ancho de los bordes para toda la página */
 * {
     font-family: Verdana;
     border-width: 1px;
 }
 
-/** Color de fondo de la web */
+/** Color de fondo de la página */
 html {
     background-color: #333333;
 }
 
-/** Los contenidos de la web se ven centrados en la ventana */
-body {
-    margin-left: 10%;
-    margin-right: 10%;
+/** Estructura de la página : flexbox */
+#main {
+    display:flex;
+    flex-direction: column; /*! El panel principal y el lateral estarán en un div */
+    align-items: center;
+    height: 95vh;
 }
 
 /** Elementos comunes entre la cabecera, el cuerpo y el pie de página */
-header, .panel-principal, footer {
+#main
+header,
+#cuerpo,
+footer {
+    /* Color de fondo de los bloques */
     background-color: #5c5c5c;
+    /* Color del texto */
     color: #d0d0d0;
+    /* Esquinas redondeadas */
     border-radius: 12px;
+    /* Los elementos de la web tienen el mismo ancho */
+    width: 75em;
 }
 
 /******************** CABECERA DE LA PÁGINA ********************/
@@ -44,97 +54,132 @@ header {
 }
 
 /** Logotipo de la esquina superior izquierda */
-/* TODO: Para el formato móvil, que el logotipo se muestre encima de los demás elementos de la cabecera */
-.logotipo {
-    /* A la izquierda del titulo y del eslogan */
+/*TODO - Para el formato móvil, que el logotipo se muestre encima de los demás elementos de la cabecera */
+header #logotipo {
+    /* todo: cambiar esto */
     float: left;
     /* Resolución de la imagen */
-    /* TODO: El logotipo debe ajustarse a la altura de la cabecera */
-    width: 60px;
-    height: 60px;
-    max-width: fit-content;
-    max-height: fit-content;
+    /*todo placeholder*/
+    width: 50px;
+    height: 50px;
+    /*TODO - El logotipo debe ajustarse a la altura de la cabecera */
     /* Color de fondo, por si la imagen falla */
     background-color: #000000;
-    /* Espacio entre la imagen y el texto */
-    margin-right: 10px;
     /* Imagen redonda, como en el Mockup */
     border-radius: 50%;
 }
 
-/** Titulo de la pagina web */
-/* TODO: Para el formato móvil, que el título y el eslogan aparezcan centrados en la cabecera, que no salgan del bloque */
-header > h1 {
+/** El titulo y los enlaces a los menús están centrados */
+/*TODO - Para el formato móvil, que el título y el eslogan aparezcan centrados en la cabecera, que no salgan del bloque */
+header h1, nav {
     text-align: center;
-    margin: 1px;
-}
-
-/** Bloque de los enlaces a los menús */
-/* TODO: Que los enlaces estén centrados en el bloque, si es posible */
-nav {
-    /* Los enlaces aparecen en el centro */
-    text-align: center;
+    margin:0;
 }
 
 /** Estilo de los enlaces a los menús */
-/* Los enlaces no están subrayados */
-nav > a {
+a {
+    /* Los enlaces no están subrayados */
     text-decoration: none;
 }
+
 /* Enlaces no visitados */
-nav > a:link {
+a:link {
     color: #60d2ff;
 }
+
 /* Enlaces visitados */
-nav > a:visited {
+a:visited {
     color: #008cff;
 }
+
 /* Enlaces con el cursor por encima */
-nav > a:hover {
+a:hover {
     color: #7acaff;
 }
+
 /* Enlaces al hacer click */
-nav > a:active {
+a:active {
     color: #ffffff;
 }
 
 /******************** CUERPO DE LA PÁGINA ********************/
 
-/** Bloque de cuerpo */
-.panel-principal {
-    /* Estructura de grid */
-    /* TODO: Estudiar el resto de layouts y ver si el grid realmente es el más adecuado */
-    display:grid;
-    /* Distribución del panel principal y el lateral, respectivamente */
-    /* TODO: Cambiar distribuciones del panel principal, no me convencen */
-    grid-template-columns: 70% 30%;
-    /* Espacio entre la cabecera y el pie de página */
+#cuerpo {
+    /* Contenedor flexbox para el panel principal y el lateral */
+    display:flex;
+    flex-direction: row;
+    flex-grow: 4;
+    /*todo: Los elementos ocupan todo el ancho */
+    /* Espacio entre la cabecera y el pie de página, respectivamente */
     margin-top: 12px;
     margin-bottom: 12px;
     /* Un poco de espacio entre el borde y el contenido para que no se salga de las esquinas */
     padding: 6px;
-    /* Dimensiones del cuerpo */
-    width: auto;
-    height: 750px;
 }
 
 /** Bloque que contiene a los cientificos */
-section {
-    float: left; /* A la izquierda */
+#cuerpo #panel-cientificos {
+    /* Rejilla estatica */
+    display: grid;
+    /* Espacio entre elementos */
+    gap: 6px 6px;
+    /* 3 filas y 3 columas */
+    grid-template-rows: calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px);
+    grid-template-columns: calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px);
+    /* Alineación de los elementos */
+    justify-content:space-evenly;
+    align-content: start;
+    /* Ocupa el 75% del panel principal */
+    flex: 75%;
+}
+
+/** Bloque que contiene a cada científico */
+#panel-cientificos .cientifico {
+    /* El nombre del científico se encuentra en el centro */
+    text-align: center;
+    background-color: #666666;
+    border-radius: 12px;
+    border-left-style: ridge;
+    border-bottom-style: ridge;
+    border-color:#333333;
+}
+
+/** La imagen */
+.cientifico img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 
 /** Panel lateral */
+#cuerpo aside {
+    /* Texto centrado, como en el Mockup */
+    border-left-style:solid;
+    /* Color del borde que separa el otro panel */
+    border-color:#d0d0d0;
+    /* Ocupa el 25% del panel principal */
+    flex: 25%;
+}
+
 aside {
-    float: right;
-    text-align: center; /* Texto centrado, como en el Mockup */
-    justify-content: center;
-    border-left-style: double;
+    padding-left: 6px;
+}
+
+aside ul {
+    /* Las listas tienen padding izquierdo por defecto, lo quitamos */
+    padding: 0;
+    /* Los elementos de la lista no tienen viñetas */
+    list-style: none;
+}
+
+aside ul li {
+    /* Los elementos de la lista están centrados en el panel lateral */
+    text-align: center;
 }
 
 /******************** PIE DE LA PÁGINA ********************/
 footer {
     /* Un poco de padding para que el texto no se vea tan ajustado */
-    padding:6px;
     text-align: center;
     border-radius: 6px;
 }
