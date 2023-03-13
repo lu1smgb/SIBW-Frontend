@@ -27,7 +27,8 @@ html {
     display:flex;
     flex-direction: column; /*! El panel principal y el lateral estarán en un div */
     align-items: center;
-    height: 95vh;
+    height: max-content;
+    min-width: 700px;
 }
 
 /** Elementos comunes entre la cabecera, el cuerpo y el pie de página */
@@ -42,7 +43,7 @@ footer {
     /* Esquinas redondeadas */
     border-radius: 12px;
     /* Los elementos de la web tienen el mismo ancho */
-    width: 75em;
+    width: 70%; /* Si yo pongo em, entonces el ancho es FIJO */
 }
 
 /******************** CABECERA DE LA PÁGINA ********************/
@@ -59,42 +60,60 @@ header #logotipo {
     /* todo: cambiar esto */
     float: left;
     /* Resolución de la imagen */
-    /*todo placeholder*/
+    /*TODO - El logotipo debe ajustarse a la altura de la cabecera */
     width: 50px;
     height: 50px;
-    /*TODO - El logotipo debe ajustarse a la altura de la cabecera */
     /* Color de fondo, por si la imagen falla */
     background-color: #000000;
     /* Imagen redonda, como en el Mockup */
     border-radius: 50%;
+    /* Mantiene su escala original */
+    object-fit: cover;
+    margin-right: 12px;
 }
 
 /** El titulo y los enlaces a los menús están centrados */
-/*TODO - Para el formato móvil, que el título y el eslogan aparezcan centrados en la cabecera, que no salgan del bloque */
 header h1, nav {
-    text-align: center;
+    text-align: left;
     margin:0;
 }
 
-/** Estilo de los enlaces a los menús */
+/*TODO - El logotipo aparecerá encima del título cuando estemos en un dispositivo móvil */
+/*TODO - Para el formato móvil, que el título y el eslogan aparezcan centrados en la cabecera, que no salgan del bloque */
+@media screen and (max-width:1000px) {
+    header h1, nav {
+        text-align: center;
+        margin: 0;
+    }
+}
+
+/** Estilo de los enlaces */
 a {
     /* Los enlaces no están subrayados */
     text-decoration: none;
 }
 
+/** Enlaces a los menús */
+#main header nav a {
+    background-color: #666666;
+    border-radius: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
 /* Enlaces no visitados */
 a:link {
-    color: #60d2ff;
+    color: #d0d0d0;
 }
 
 /* Enlaces visitados */
 a:visited {
-    color: #008cff;
+    color: #d0d0d0;
 }
 
 /* Enlaces con el cursor por encima */
 a:hover {
-    color: #7acaff;
+    color: #90d3ff;
 }
 
 /* Enlaces al hacer click */
@@ -109,12 +128,28 @@ a:active {
     display:flex;
     flex-direction: row;
     flex-grow: 4;
-    /*todo: Los elementos ocupan todo el ancho */
     /* Espacio entre la cabecera y el pie de página, respectivamente */
     margin-top: 12px;
     margin-bottom: 12px;
     /* Un poco de espacio entre el borde y el contenido para que no se salga de las esquinas */
     padding: 6px;
+}
+
+/** La página se ajusta a pantallas que tengan menos de 1000px de ancho */
+@media screen and (max-width:1000px) {
+    #cuerpo {
+        flex-direction: column;
+    }
+
+    #cuerpo aside {
+        /* Se cambia la posición del separador de izquierda a arriba */
+        border-left-width: 0;
+        border-top-style: solid;
+    }
+
+    #cuerpo #panel-cientificos {
+        padding-bottom: 6px;
+    }
 }
 
 /** Bloque que contiene a los cientificos */
@@ -124,13 +159,15 @@ a:active {
     /* Espacio entre elementos */
     gap: 6px 6px;
     /* 3 filas y 3 columas */
-    grid-template-rows: calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px);
-    grid-template-columns: calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px);
-    /* Alineación de los elementos */
-    justify-content:space-evenly;
-    align-content: start;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
+    /* Alineación de los elementos en el eje X */
+    /*TODO - Los cientificos deberian de tener todos la mismas dimensiones ??? */
+    justify-content: stretch;
     /* Ocupa el 75% del panel principal */
     flex: 75%;
+    /* No toca el separador */
+    padding-right: 6px;
 }
 
 /** Bloque que contiene a cada científico */
@@ -139,47 +176,50 @@ a:active {
     text-align: center;
     background-color: #666666;
     border-radius: 12px;
-    border-left-style: ridge;
-    border-bottom-style: ridge;
-    border-color:#333333;
 }
 
 /** La imagen */
 .cientifico img {
     width: 150px;
     height: 150px;
+    object-fit: cover;
     border-radius: 50%;
+}
+
+/** El nombre */
+.cientifico p {
+    /* Negrita */
+    font-weight: bold;
 }
 
 /** Panel lateral */
 #cuerpo aside {
-    /* Texto centrado, como en el Mockup */
-    border-left-style:solid;
-    /* Color del borde que separa el otro panel */
-    border-color:#d0d0d0;
     /* Ocupa el 25% del panel principal */
     flex: 25%;
-}
-
-aside {
     padding-left: 6px;
+    border-left-style: solid;
 }
 
-aside ul {
+#cuerpo aside ul {
     /* Las listas tienen padding izquierdo por defecto, lo quitamos */
     padding: 0;
     /* Los elementos de la lista no tienen viñetas */
     list-style: none;
 }
 
-aside ul li {
+#cuerpo aside ul li {
     /* Los elementos de la lista están centrados en el panel lateral */
     text-align: center;
 }
 
 /******************** PIE DE LA PÁGINA ********************/
 footer {
-    /* Un poco de padding para que el texto no se vea tan ajustado */
+    /* Texto centrado */
     text-align: center;
+    /* Bordes redondeados */
     border-radius: 6px;
+    /* Un poco de padding para que el texto no se vea tan ajustado */
+    padding: 1ch;
+    /* El ancho del elemento se ajustará al texto */
+    min-width: fit-content;
 }
