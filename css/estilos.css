@@ -25,7 +25,7 @@ html {
 /** Estructura de la página : flexbox */
 #main {
     display:flex;
-    flex-direction: column; /*! El panel principal y el lateral estarán en un div */
+    flex-direction: column;
     align-items: center;
     height: max-content;
     min-width: 700px;
@@ -50,6 +50,12 @@ footer {
 
 /** Bloque de la cabecera */
 header {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-template-rows: auto;
+    column-gap: 6px;
+    /* Alineamos verticalmente los elementos */
+    align-items: center;
     /* Espacio entre el contenido y el borde */
     padding: 12px;
 }
@@ -57,19 +63,17 @@ header {
 /** Logotipo de la esquina superior izquierda */
 /*TODO - Para el formato móvil, que el logotipo se muestre encima de los demás elementos de la cabecera */
 header #logotipo {
-    /* todo: cambiar esto */
-    float: left;
     /* Resolución de la imagen */
+    grid-row: 1/3;
     /*TODO - El logotipo debe ajustarse a la altura de la cabecera */
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     /* Color de fondo, por si la imagen falla */
     background-color: #000000;
     /* Imagen redonda, como en el Mockup */
     border-radius: 50%;
     /* Mantiene su escala original */
     object-fit: cover;
-    margin-right: 12px;
 }
 
 /** El titulo y los enlaces a los menús están centrados */
@@ -78,9 +82,19 @@ header h1, nav {
     margin:0;
 }
 
-/*TODO - El logotipo aparecerá encima del título cuando estemos en un dispositivo móvil */
+header h1 {
+    font-size:40px;
+}
+
 /*TODO - Para el formato móvil, que el título y el eslogan aparezcan centrados en la cabecera, que no salgan del bloque */
 @media screen and (max-width:1000px) {
+    /** El logotipo aparecerá encima del título cuando estemos en un dispositivo móvil */
+    header {
+        display:flex;
+        flex-direction: column;
+    }
+
+    /** El título y el eslogan aparecen centrados en la cabecera */
     header h1, nav {
         text-align: center;
         margin: 0;
@@ -89,34 +103,39 @@ header h1, nav {
 
 /** Estilo de los enlaces */
 a {
-    /* Los enlaces no están subrayados */
+    /* Los enlaces no aparecerán subrayados */
     text-decoration: none;
 }
 
-/** Enlaces a los menús */
+/** Enlaces a los menús de la cabecera */
 #main header nav a {
+    /* Color de fondo distinto al de la cabecera, simulando un botón */
     background-color: #666666;
+    /* Bordes redondeados */
     border-radius: 12px;
+    /* Espacio a los lados del resto de menús */
     padding-left: 12px;
     padding-right: 12px;
 }
 
-/* Enlaces no visitados */
+/** Enlaces no visitados */
 a:link {
     color: #d0d0d0;
 }
 
-/* Enlaces visitados */
+/** Enlaces visitados */
 a:visited {
     color: #d0d0d0;
 }
 
-/* Enlaces con el cursor por encima */
+/*? El color de texto en los visitados y en los no visitados es el mismo */
+
+/** Enlaces con el cursor por encima */
 a:hover {
     color: #90d3ff;
 }
 
-/* Enlaces al hacer click */
+/** Enlaces al hacer click */
 a:active {
     color: #ffffff;
 }
@@ -135,38 +154,43 @@ a:active {
     padding: 6px;
 }
 
-/** La página se ajusta a pantallas que tengan menos de 1000px de ancho */
+/** Para dispositivos móviles */
 @media screen and (max-width:1000px) {
+    /* El panel lateral pasará a estar arriba o abajo del panel principal */
     #cuerpo {
         flex-direction: column;
     }
 
+    /* Eliminamos el borde de la izquierda, añadimos el borde de arriba */
     #cuerpo aside {
-        /* Se cambia la posición del separador de izquierda a arriba */
         border-left-width: 0;
         border-top-style: solid;
     }
 
+    /* Añadimos padding abajo para que no toque el borde */
     #cuerpo #panel-cientificos {
         padding-bottom: 6px;
     }
 }
 
-/** Bloque que contiene a los cientificos */
+/** ----- Bloque que contiene a los cientificos ----- */
 #cuerpo #panel-cientificos {
     /* Rejilla estatica */
     display: grid;
-    /* Espacio entre elementos */
+    /* Espacio entre elementos, independiente de la clase "cientifico" */
     gap: 6px 6px;
     /* 3 filas y 3 columas */
-    grid-template-rows: auto auto auto;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px);
     /* Alineación de los elementos en el eje X */
-    /*TODO - Los cientificos deberian de tener todos la mismas dimensiones ??? */
-    justify-content: stretch;
+    /*TODO - Los cientificos deberian de tener las mismas dimensiones ??? */
+    justify-content:;
     /* Ocupa el 75% del panel principal */
     flex: 75%;
-    /* No toca el separador */
+}
+
+/** Bloque que contiene la biografia para un cientifico */
+#cuerpo #panel-biografia {
+    flex:75%;
     padding-right: 6px;
 }
 
@@ -184,12 +208,14 @@ a:active {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
+    padding-top: 6px;
 }
 
 /** El nombre */
 .cientifico p {
     /* Negrita */
     font-weight: bold;
+    margin: 6px;
 }
 
 /** Panel lateral */
@@ -200,6 +226,7 @@ a:active {
     border-left-style: solid;
 }
 
+/*? Que hago con esto ??????????????????????????????????????????????????????? */
 #cuerpo aside ul {
     /* Las listas tienen padding izquierdo por defecto, lo quitamos */
     padding: 0;
@@ -212,6 +239,8 @@ a:active {
     text-align: center;
 }
 
+/*??????????????????????????????????????????????????????????????????????????? */
+
 /******************** PIE DE LA PÁGINA ********************/
 footer {
     /* Texto centrado */
@@ -220,6 +249,6 @@ footer {
     border-radius: 6px;
     /* Un poco de padding para que el texto no se vea tan ajustado */
     padding: 1ch;
-    /* El ancho del elemento se ajustará al texto */
+    /* El ancho del elemento se ajustará al texto que tenga */
     min-width: fit-content;
 }
