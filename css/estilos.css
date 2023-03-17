@@ -313,9 +313,6 @@ a:active {
     /* Recuadro con los bordes redondeados */
     background-color: #666666;
     border-radius: 12px;
-    /* Un borde para remarcar que es un elemento al que podemos hacer clic */
-    /* border-style: solid;
-    border-color: #ddd; */
 }
 
 /** La imagen del científico en los menús */

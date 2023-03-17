@@ -21,6 +21,8 @@
 #main header {
     display:flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 1ch;
 }
 
 #main header h1 {
@@ -29,7 +31,7 @@
 
 /* El título y el eslogan aparecen centrados en la cabecera */
 #main header h1, nav {
-    text-align: center;
+    text-align: center; 
     margin: 0;
 }
 
@@ -49,14 +51,27 @@
 }
 
 #main header nav {
-    visibility: hidden;
+    display: none;
 }
 
 #main #cuerpo aside {
-    visibility: hidden;
+    display: none;
+}
+
+#main #cuerpo #panel-biografia .pila-imagenes {
+    /* Una columna flex a la derecha del texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #main #cuerpo #panel-biografia .botones-sociales {
     visibility: hidden;
 }
 
+.cientifico img {
+    width: 150px;
+    height: 150px;
+    /* La imagen original mantiene su relación de aspecto */
+    object-fit: cover;
+}
