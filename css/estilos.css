@@ -13,8 +13,10 @@
 
 /** Fuente por defecto y ancho de los bordes para toda la página */
 * {
-    font-family: Verdana;
+    font-family:Verdana;
     border-width: 1px;
+    /* Texto sombreado de forma sutil */
+    text-shadow: 0px 0px 1ch #333;
 }
 
 /** Color de fondo de la página */
@@ -24,7 +26,7 @@ html {
 
 /** Ancho mínimo de la página */
 body {
-    min-width: 700px;
+    min-width: 600px;
 }
 
 /** Estructura de la página : flexbox */
@@ -42,11 +44,21 @@ header, #cuerpo, footer {
     /* Color de fondo de los bloques */
     background-color: #5c5c5c;
     /* Color del texto */
-    color: #d0d0d0;
+    color: #f0f0f0;
     /* Esquinas redondeadas */
     border-radius: 12px;
     /* Los elementos de la web tienen el mismo ancho */
-    width: 90%; /* ? Si yo pongo em, entonces el ancho es FIJO */
+    width: 90%;
+    /* Una sombra sobre el fondo para que quede molón */    
+    box-shadow: 0px 5px 12px #111;
+}
+
+/** Que no haya márgenes laterales en los móviles */
+@media screen and (max-width:1000px) {
+    #main
+    header, #cuerpo, footer {
+        width: 100%;
+    }
 }
 
 /******************** CABECERA DE LA PÁGINA ********************/
@@ -94,10 +106,11 @@ h1, nav {
 h1 {
     /*? Cambiar? */
     font-size:40px;
+    text-shadow: 0px 0px 8px #90d3ff;
 }
 
 /** Para dispositivos móviles */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
     /* El logotipo aparecerá encima del título */
     #main header {
         display:flex;
@@ -109,12 +122,19 @@ h1 {
         text-align: center;
         margin: 0;
     }
+
+    #main header h1 {
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
 }
 
 /** Estilo de todos los enlaces */
 a {
     /* Los enlaces no aparecerán subrayados */
     text-decoration: none;
+    /* Texto sombreado de forma sutil */
+    text-shadow: 0px 0px 8px #333;
 }
 
 /** Enlaces a los menús de la cabecera */
@@ -126,19 +146,24 @@ a {
     /* Espacio a los lados del resto de menús */
     padding-left: 12px;
     padding-right: 12px;
-    /* Un borde para remarcar que es un elemento al que podemos hacer clic */
-    border-style: solid;
-    border-color: #ddd;
+}
+
+#main header nav a:hover {
+    box-shadow: 0px 0px 0.5ch #000;
+}
+
+#main header nav a:active {
+    box-shadow: 0px 0px 0.5ch #000 inset;
 }
 
 /** Enlaces no visitados */
 a:link {
-    color: #d0d0d0;
+    color: #f0f0f0;
 }
 
 /** Enlaces visitados */
 a:visited {
-    color: #d0d0d0;
+    color: #f0f0f0;
 }
 
 /*? El color de texto en los visitados y en los no visitados es el mismo */
@@ -155,6 +180,7 @@ a:active {
 
 /******************** CUERPO DE LA PÁGINA ********************/
 
+/** El cuerpo de la página contiene al panel principal (que puede ser un menú o una biografía) */
 #cuerpo {
     /* Contenedor flexbox para el panel principal y el lateral */
     display:flex;
@@ -176,7 +202,7 @@ a:active {
     grid-template-columns: calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px) calc(1/3 * 100% - 6px);
     /* Alineación de los elementos en el eje X */
     /*TODO - Los cientificos deberian de tener las mismas dimensiones ??? */
-    justify-content:space-around;
+    justify-content: space-around;
     /* Ocupa el 75% del panel principal */
     flex: 75%;
     /* No toca el borde lateral */
@@ -185,8 +211,8 @@ a:active {
     padding-bottom: 0;
 }
 
-/** Para dispositivos móviles */
-@media screen and (max-width:700px) {
+/** Para dispositivos móviles... */
+@media screen and (max-width:1000px) {
     /* El panel lateral pasará a estar arriba o abajo del panel principal */
     #cuerpo {
         flex-direction: column;
@@ -194,6 +220,7 @@ a:active {
 
     /* Eliminamos el borde de la izquierda, añadimos el borde de arriba */
     #cuerpo aside {
+        width: auto;
         border-left-width: 0;
         border-top-style: solid;
     }
@@ -206,20 +233,43 @@ a:active {
 }
 
 /** Bloque que contiene la biografia para un cientifico */
-/*! WIP */
 #cuerpo #panel-biografia {
     flex:75%;
-    padding-right: 6px;
+    margin-right: 6px;
 }
 
+/** Pila de imagenes para cada biografia */
+#cuerpo #panel-biografia .pila-imagenes {
+    /* Una columna flex a la derecha del texto */
+    display: flex;
+    flex-direction: column;
+    float:right;
+    margin-left:1ch;
+    margin-bottom: 1ch;
+}
+
+/** Pila de imágenes en dispositivos móviles */
+@media screen and (max-width:1000px) {
+    #cuerpo #panel-biografia .pila-imagenes {
+        float: none;
+    }
+
+    #cuerpo #panel-biografia h2, h3, h4 {
+        text-align: center;
+    }
+}
+
+/** Bloque de los botones sociales (FaceBook, Twitter, Imprimir) */
 #cuerpo #panel-biografia .botones-sociales {
     display: flex;
+    text-align: center;
     flex-direction: row;
     justify-content: space-evenly;
     align-content: center;
     padding-bottom: 6px;
 }
 
+/** Elementos del bloque de los botones sociales */
 #cuerpo #panel-biografia .botones-sociales a {
     /* Negrita */
     font-weight: bold;
@@ -227,27 +277,50 @@ a:active {
     background-color: #666666;
     /* Padding */
     padding: 0.5ch;
-    /* Un borde para remarcar que es un elemento al que podemos hacer clic */
-    border-style: solid;
-    border-color: #ddd;
     border-radius: 0.5ch;
 }
 
-/** Bloque que contiene a cada científico */
-/* Esta clase puede usarse tanto en bloques "a" como en bloques "img" */
-#panel-cientificos .cientifico {
+@media screen {
+    
+}
+
+#cuerpo #panel-biografia .botones-sociales a:hover {
+    box-shadow: 0px 0px 8px #000;
+}
+
+#cuerpo #panel-biografia .botones-sociales a:active {
+    box-shadow: 0px 0px 8px #000 inset;
+}
+
+/** Bloque que contiene a un cientifico */
+/* Esta clase puede usarse tanto en la biografia como en los menús */
+.cientifico {
     /* El nombre del científico se encuentra en el centro */
     text-align: center;
+}
+
+.cientifico:hover {
+    box-shadow: 0px 0px 4px #000;
+}
+
+/** Sensación de que estás apretando un botón */
+.cientifico:active {
+    box-shadow: 0px 0px 4px #000 inset;
+}
+
+/** Bloque que contiene a un cientifico en los menús */
+#panel-cientificos .cientifico {
     /* Recuadro con los bordes redondeados */
     background-color: #666666;
     border-radius: 12px;
     /* Un borde para remarcar que es un elemento al que podemos hacer clic */
-    border-style: solid;
-    border-color: #ddd;
+    /* border-style: solid;
+    border-color: #ddd; */
 }
 
-/** La imagen */
-.cientifico img {
+/** La imagen del científico en los menús */
+#panel-cientificos .cientifico img {
+    background-color: #000;
     /*? Cambiar? */
     width: 150px;
     height: 150px;
@@ -256,10 +329,33 @@ a:active {
     /* Borde redondeado */
     border-radius: 50%;
     /* No toca el borde de la clase cientifico */
-    padding-top: 6px;
+    margin-top: 6px;
+    box-shadow: 0px 0px 8px #000;
 }
 
-/** El nombre */
+/** Bloque que contiene a un cientifico en las biografías */
+#panel-cientificos .cientifico {
+    /* Recuadro con los bordes redondeados */
+    background-color: #666666;
+    border-radius: 12px;
+}
+
+#panel-biografia .pila-imagenes .cientifico {
+    box-shadow: none;
+}
+
+/** La imagen del científico en las biografías */
+#panel-biografia .pila-imagenes .cientifico img {
+    /* La imagen es rectangular */
+    border-radius: 0;
+    /* Dimensiones */
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    box-shadow: 0px 0px 6px #000;
+}
+
+/** El nombre o descripción de la imagen tanto en los menús como en las biografías */
 .cientifico p {
     /* Negrita */
     font-weight: bold;
@@ -268,12 +364,21 @@ a:active {
 
 /** Panel lateral */
 #cuerpo aside {
+
+    /* Bloque flexbox columna con el contenido centrado en el eje vertical */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
     /* Ocupa el 25% del panel principal */
     flex: 25%;
+
     /* Borde a la izquierda */
     border-left-style: solid;
+
     /* El contenido no toca el borde */
     padding-left: 6px;
+
 }
 
 /** Lista de enlaces del panel lateral */
@@ -300,4 +405,6 @@ footer {
     padding: 1ch;
     /* El ancho del elemento se ajustará al texto que tenga */
     min-width: fit-content;
+    /* Texto sombreado de forma sutil */
+    text-shadow: 0px 0px 8px #444;
 }
