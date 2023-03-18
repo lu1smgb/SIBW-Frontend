@@ -42,10 +42,6 @@
     /* Resolución de la imagen */
     width: 100px;
     height: 100px;
-    /* Color de fondo, por si la imagen falla */
-    background-color: #000000;
-    /* Imagen redonda */
-    border-radius: 50%;
     /* Mantiene su escala original */
     object-fit: cover;
 }
