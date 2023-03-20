@@ -13,7 +13,7 @@
 
 /** Fuente por defecto y ancho de los bordes para toda la página */
 * {
-    font-family:Verdana;
+    font-family:Verdana, Tahoma, sans-serif;
     border-width: 1px;
     /* Texto sombreado de forma sutil */
     text-shadow: 0px 0px 1ch #333;
@@ -268,7 +268,7 @@ a:active {
 }
 
 /** Elementos del bloque de los botones sociales */
-#cuerpo #panel-biografia .botones-sociales a {
+#cuerpo #panel-biografia .botones-sociales button {
     /* Negrita */
     font-weight: bold;
     /* Color del botón */
@@ -276,17 +276,16 @@ a:active {
     /* Padding */
     padding: 0.5ch;
     border-radius: 0.5ch;
+    /* Color */
+    color: #f0f0f0;
+    border: none;
 }
 
-@media screen {
-    
-}
-
-#cuerpo #panel-biografia .botones-sociales a:hover {
+#cuerpo #panel-biografia .botones-sociales button:hover {
     box-shadow: 0px 0px 8px #000;
 }
 
-#cuerpo #panel-biografia .botones-sociales a:active {
+#cuerpo #panel-biografia .botones-sociales button:active {
     box-shadow: 0px 0px 8px #000 inset;
 }
 
@@ -328,12 +327,6 @@ a:active {
     box-shadow: 0px 0px 8px #000;
 }
 
-/** Bloque que contiene a un cientifico en las biografías */
-#panel-cientificos .cientifico {
-    /* Recuadro con los bordes redondeados */
-    background-color: #666666;
-    border-radius: 12px;
-}
 
 #panel-biografia .pila-imagenes .cientifico {
     box-shadow: none;
