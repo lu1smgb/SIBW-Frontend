@@ -165,7 +165,8 @@ nav {
 }
 
 /** Enlaces a los menús de la cabecera */
-#main header nav button {
+/** También usaremos este estilo para el botón de enviar comentario */
+button {
 
     /* Color de fondo distinto al de la cabecera */
     background-color: #666666;
@@ -180,8 +181,7 @@ nav {
     border: none;
 
     /* Espacio a los lados del resto de menús */
-    padding-left: 12px;
-    padding-right: 12px;
+    padding: 0.5ch;
 
     /* El paso entre estados no es inmediato */
     transition: 0.2s;
@@ -276,24 +276,7 @@ nav {
 /** Elementos del bloque de los botones sociales */
 #cuerpo #panel-biografia .botones-sociales button {
 
-    /* Negrita */
     font-weight: bold;
-
-    /* Color del botón */
-    background-color: #666666;
-
-    /* Padding */
-    padding: 0.5ch;
-    border-radius: 0.5ch;
-
-    /* Color del texto */
-    color: #f0f0f0;
-
-    /* Quitamos el borde por defecto */
-    border: none;
-
-    /* El paso entre estados no es inmediato */
-    transition: 0.2s;
 
 }
 
@@ -417,7 +400,104 @@ nav {
     text-align: center;
 }
 
-/******************** PIE DE LA PÁGINA ********************/
+/*************************************************** PANEL DE COMENTARIOS ***************************************************/
+
+#panel-comentarios {
+
+    display: flex;
+    flex-direction: column;
+
+    /* Dimensiones */
+    width: 40%;
+    height: 60vmax;
+
+    /* Pegado a la derecha */
+    /*! Cambiar dimensiones y posición en vista móvil */
+    position: absolute;
+    top:6px;
+    right:0px;
+
+    /* Bordes redondeados solo a la izquierda */    
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    border-right-style: none;
+    padding:1ch;
+
+    /* Fondo y color del texto */
+    background-color: rgba(80, 80, 80, 0.9);
+    color: #f0f0f0;
+    box-shadow: -4px 4px 6px #000;
+
+}
+
+#panel-comentarios #vista-comentarios {
+    flex: 70%;
+    /* Si hay muchos comentarios en el panel, añadir un deslizador */
+    overflow-y:scroll;
+    word-wrap: break-word;
+}
+
+#panel-comentarios #vista-comentarios .comentario {
+    display: flex;
+    flex-direction: column;
+    padding: 1ch;
+    border-top-style: solid;
+    /* Texto de los comentarios ligeramente más pequeño */
+    font-size: 0.9rem
+}
+
+#panel-comentarios #vista-comentarios .comentario .fecha {
+    font-size: 0.7rem;
+}
+
+/** Formulario con los comentarios */
+#panel-comentarios #form-comentarios {
+    flex: 30%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    padding: 1ch;
+
+    border-top-style: solid;
+}
+
+#panel-comentarios #form-comentarios #nombre-email {
+    display:flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Estilo general para todos los campos */
+#panel-comentarios #form-comentarios #nombre-email>input, textarea {
+    background-color: #666666;
+    color: #f0f0f0;
+    text-shadow: none;
+    border-radius: 1ch;
+    padding: 1ch;
+}
+
+#panel-comentarios #form-comentarios #nombre-email input {
+    width: 100%;
+    text-align: center;
+}
+
+#panel-comentarios #form-comentarios textarea {
+    /* Impide que podamos cambiar el tamaño del campo para el contenido */
+    width: 95%;
+    resize: none;
+    font-size: 0.9rem;
+}
+
+#panel-comentarios #form-comentarios button {
+    width: min-content;
+}
+
+/*************************************************** -------------------- ***************************************************/
+
+
+/** Pie de la página */
 footer {
 
     /* Texto centrado */

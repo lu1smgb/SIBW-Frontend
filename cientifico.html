@@ -25,10 +25,12 @@
     <title>Biografias de 100cia</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="icon" href="images/logotipo.gif">
+    <!-- Script que maneja el comportamiento del panel de comentarios -->
+    <script src="js/PanelComentarios.js" defer></script>
 </head>
 
 <!-- CUERPO HTML: Contenido de la página -->
-<body>
+<body onload="cargarJS();">
 
     <div id="main">
 
@@ -103,6 +105,49 @@
         </footer>
 
     </div>
+
+    <div id="panel-comentarios">
+        <!--
+            Zona comentarios
+            -   Vista comentarios
+            -   Formulario
+        -->
+        <strong id="contador-comentarios">- comentarios</strong>
+        <div id="vista-comentarios">
+            <!--
+                - Autor
+                - Fecha
+                - Hora
+                - Texto
+            -->
+            <div class="comentario">
+                <strong class="nombre">Persona 1</strong>
+                <strong class="fecha">DD/MM/AAAA HH:MM</strong>
+                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in diam elementum, feugiat urna a, lacinia mauris.</p>
+            </div>
+            <div class="comentario">
+                <strong class="nombre">Persona 2</strong>
+                <strong class="fecha">DD/MM/AAAA HH:MM</strong>
+                <p class="texto">Suspendisse vitae velit eu lectus maximus semper et id turpis. Proin efficitur ex et condimentum rhoncus.</p>
+            </div>
+        </div>
+        <form id="form-comentarios" name="form-comentarios" target="_self">
+            <strong>Publica tu comentario</strong>
+            <!--
+                - Nombre
+                - Email
+                - Texto
+                - Enviar
+            -->
+            <div id="nombre-email">
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="email" name="email" required placeholder="Email">
+            </div>
+            <textarea name="texto" placeholder="Escribe aquí..."></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    
 
 </body>
 
