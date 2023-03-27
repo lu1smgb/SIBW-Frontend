@@ -180,7 +180,7 @@ function publicarComentario() {
     }
 
     // Actualizamos el contador
-    contarComentarios();
+    actualizarContador();
 
     // Limpiamos el formulario
     limpiarFormulario();
